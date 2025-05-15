@@ -1,0 +1,128 @@
+[
+    {
+      "question": "how to apply",
+      "answer": "You can apply through our careers page at https://techsolutions.com/careers",
+      "keywords": ["apply", "application", "how to join"],
+      "category": "career"
+    },
+    {
+      "question": "what is your email",
+      "answer": "Our contact email is info@techsolutions.com",
+      "keywords": ["email", "contact email", "mail"],
+      "category": "contact"
+    },
+    {
+      "question": "what services do you offer",
+      "answer": "We offer web development, mobile app development, and AI solutions",
+      "keywords": ["services", "offerings", "what do you do"],
+      "category": "services"
+    },
+    {
+      "question": "where are you located",
+      "answer": "Our headquarters is at 123 Tech Park, Silicon Valley",
+      "keywords": ["location", "address", "office"],
+      "category": "contact"
+    },
+    {
+      "question": "how much does a website cost",
+      "answer": "Basic websites start at $2,000, with more complex sites costing $5,000+",
+      "keywords": ["cost", "price", "pricing", "how much"],
+      "category": "pricing"
+    },
+    {
+      "question": "much does",
+      "answer": "Basic websites start at $2,000, with more complex sites costing $5,000+",
+      "keywords": ["cost", "price", "pricing", "how much"],
+      "category": "pricing"
+    },
+    {
+      "question": "how to apply",
+      "answer": "You can apply through our careers page at https://techsolutions.com/careers",
+      "keywords": ["apply", "application", "how to join"],
+      "category": "career"
+    },
+    {
+      "question": "what is your email",
+      "answer": "Our contact email is info@techsolutions.com",
+      "keywords": ["email", "contact email", "mail"],
+      "category": "contact"
+    },
+    {
+      "question": "do you build websites",
+      "answer": "Yes, we specialize in developing responsive and modern websites tailored to your business needs.",
+      "keywords": ["website", "web development", "site banwana", "create website"],
+      "category": "services"
+    },
+    {
+      "question": "do you build desktop applications",
+      "answer": "Yes, we develop custom desktop applications for Windows using the latest technologies.",
+      "keywords": ["desktop app", "desktop software", "PC application", "windows app"],
+      "category": "services"
+    },
+    {
+      "question": "how much does a website cost",
+      "answer": "Website development costs vary based on features and complexity. Contact us for a customized quote.",
+      "keywords": ["website cost", "price", "charges", "web design cost"],
+      "category": "pricing"
+    },
+    {
+      "question": "how to contact support",
+      "answer": "You can reach our support team via email at support@techsolutions.com or call us at +91-9876543210.",
+      "keywords": ["support", "help", "contact support", "customer care"],
+      "category": "support"
+    },
+    {
+      "question": "do you offer e-commerce solutions",
+      "answer": "Yes, we build custom e-commerce websites with secure payment integration and inventory management.",
+      "keywords": ["ecommerce", "online store", "shop", "sell online"],
+      "category": "services"
+    },
+    {
+      "question": "where are you located",
+      "answer": "We are located in Lucknow, Uttar Pradesh, India.",
+      "keywords": ["location", "address", "where are you", "office"],
+      "category": "contact"
+    },
+    {
+      "question": "what technologies do you use",
+      "answer": "We work with modern technologies like React, .NET Core, SQL Server, Bootstrap, and more.",
+      "keywords": ["technologies", "stack", "tools", "frameworks"],
+      "category": "services"
+    },
+    {
+      "question": "how long will my project take",
+      "answer": "The project timeline depends on the complexity. Basic websites take 1-2 weeks, complex apps may take 4-6 weeks.",
+      "keywords": ["timeline", "duration", "project time", "kitna time lagega"],
+      "category": "project timeline"
+    },
+    {
+      "question": "do you have a portfolio",
+      "answer": "Yes, you can view our portfolio at https://techsolutions.com/portfolio to see our recent work.",
+      "keywords": ["portfolio", "projects", "past work", "examples"],
+      "category": "portfolio"
+    },
+    {
+      "question": "do you offer internships",
+      "answer": "Yes, we offer internships in web development and design. Please apply via our careers page.",
+      "keywords": ["internship", "intern", "training", "internships program"],
+      "category": "internship"
+    },
+    {
+      "question": "my website is not working",
+      "answer": "Please check your internet connection or try again later. If the problem continues, contact support.",
+      "keywords": ["website down", "not working", "web app problem", "site error"],
+      "category": "issues"
+    },
+    {
+      "question": "server is down",
+      "answer": "We're aware of the issue and our technical team is working on it. Please try again in a few minutes.",
+      "keywords": ["server down", "server issue", "503", "can't connect"],
+      "category": "issues"
+    },
+    {
+      "question": "getting error on website",
+      "answer": "We’re sorry for the inconvenience. Please take a screenshot of the error and email it to support@techsolutions.com.",
+      "keywords": ["error", "bug", "website problem", "app crash"],
+      "category": "issues"
+    }
+  ]
