@@ -78,17 +78,16 @@ const Navbar = () => {
               color: 'inherit'
             }}
           >
-            <Avatar
-              sx={{
-                mr: 2,
-                bgcolor: 'primary.main',
-                color: 'white',
-                width: 36,
-                height: 36
-              }}
-            >
-              <CodeIcon />
-            </Avatar>
+            <Box
+    component="img"
+    src="./favicon.ico"
+    alt="Logo"
+    sx={{
+      width: 60,
+      height: 50,
+      mr: 2
+    }}
+  />
             <Typography 
               variant="h6" 
               component="div" 

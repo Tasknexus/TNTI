@@ -85,7 +85,7 @@ const Hero = () => {
                   sx={{ 
                     width: '100%',
                     height: 'auto',
-                    maxHeight: '400px',
+                    maxHeight: '300px',
                     objectFit: 'contain',
                     borderRadius: '12px',
                     boxShadow: '0 15px 30px rgba(41, 98, 255, 0.2)',
