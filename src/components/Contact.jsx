@@ -130,9 +130,9 @@ const Contact = () => {
                         Headquarters
                       </Typography>
                       <Typography variant="body1" color="text.secondary">
-                        123 Tech Street<br />
-                        San Francisco, CA 94107<br />
-                        United States
+                        05 SBI Guest House Street<br />
+                        Uttar Pradesh, IN 226021<br />
+                        India 
                       </Typography>
                     </Box>
                   </Box>
