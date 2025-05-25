@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { 
   Box, IconButton, Typography, TextField, Avatar, Button,
   Chip, CircularProgress, Paper, FormControl, InputLabel, 
-  Select, MenuItem, Divider
+  Select, MenuItem, Divider, useMediaQuery, useTheme
 } from '@mui/material';
 import { 
   Send as SendIcon, 
@@ -19,9 +19,6 @@ import {
   CheckCircle as SuccessIcon
 } from '@mui/icons-material';
 
-import { Send, Close, SmartToy, Person } from '@mui/icons-material';
-import { ModelTrainer } from './ModelTrainer';
-
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -35,13 +32,25 @@ const Chatbot = () => {
     description: ''
   });
   const messagesEndRef = useRef(null);
-  const modelTrainer = useRef(new ModelTrainer());
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const defaultQuickReplies = ['services', 'pricing', 'projects', 'career', 'contact', 'support'];
 
+  // Mock responses - replace with your actual ModelTrainer implementation
+  const mockResponses = {
+    greeting: "Hello! I'm Nexi, your AI assistant. How can I help you today?",
+    support: "Please fill out the support form below and we'll get back to you soon.",
+    services: "We offer a range of services including web development, mobile apps, and cloud solutions.",
+    pricing: "Our pricing depends on project requirements. Contact us for a customized quote.",
+    projects: "We've completed over 200 projects across various industries. Ask me about specific cases!",
+    career: "We're always looking for talented people. Check our careers page for current openings.",
+    contact: "You can reach us at contact@example.com or call +1 (555) 123-4567."
+  };
+
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      addBotMessage(modelTrainer.current.responses.greeting, defaultQuickReplies);
+      addBotMessage(mockResponses.greeting, defaultQuickReplies);
     }
   }, [isOpen]);
 
@@ -60,18 +69,27 @@ const Chatbot = () => {
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
     
-    // Add user message
     setMessages(prev => [...prev, { sender: 'user', text: input }]);
     setInput('');
     setLoading(true);
     
     try {
-      const { answer, showSupportForm = false, quickReplies = [] } = 
-        await modelTrainer.current.findResponse(input);
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      addBotMessage(answer, quickReplies);
+      const lowerInput = input.toLowerCase();
+      let response = mockResponses[lowerInput] || 
+        "I'm not sure I understand. Could you rephrase that?";
       
-      if (showSupportForm) {
+      let showForm = false;
+      if (lowerInput.includes('support') || lowerInput.includes('help')) {
+        showForm = true;
+        response = mockResponses.support;
+      }
+      
+      addBotMessage(response, showForm ? [] : defaultQuickReplies);
+      
+      if (showForm) {
         setShowSupportForm(true);
       }
     } catch (error) {
@@ -88,25 +106,18 @@ const Chatbot = () => {
       return;
     }
     
-    if (reply === 'support' || reply === 'help') {
+    if (reply === 'support') {
       setShowSupportForm(true);
-      addBotMessage(modelTrainer.current.responses.support, []);
+      addBotMessage(mockResponses.support, []);
       return;
     }
     
-    // Add quick reply as user message
     setMessages(prev => [...prev, { sender: 'user', text: reply }]);
     setLoading(true);
     
     try {
-      const { answer, showSupportForm = false, quickReplies = [] } = 
-        await modelTrainer.current.findResponse(reply);
-      
-      addBotMessage(answer, quickReplies);
-      
-      if (showSupportForm) {
-        setShowSupportForm(true);
-      }
+      await new Promise(resolve => setTimeout(resolve, 800));
+      addBotMessage(mockResponses[reply] || "Here's information about " + reply, defaultQuickReplies);
     } catch (error) {
       console.error("Error generating response:", error);
       addBotMessage("Sorry, I encountered an error. Please try again.");
@@ -120,32 +131,17 @@ const Chatbot = () => {
     setLoading(true);
     
     try {
-      // Replace with your Formspree ID
-      const response = await fetch("https://formspree.io/f/xanoqkzo", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: supportForm.name,
-          email: supportForm.email,
-          problemType: supportForm.problemType,
-          description: supportForm.description,
-          _subject: `Support Request - ${supportForm.problemType}`,
-          _replyto: supportForm.email
-        }),
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addBotMessage("Thank you! Your support request has been submitted. We'll contact you soon.", defaultQuickReplies);
+      setSupportForm({
+        name: '',
+        email: '',
+        problemType: 'technical',
+        description: ''
       });
-
-      if (response.ok) {
-        addBotMessage("Thank you! Your support request has been submitted. We'll contact you soon.", defaultQuickReplies);
-        setSupportForm({
-          name: '',
-          email: '',
-          problemType: 'technical',
-          description: ''
-        });
-        setShowSupportForm(false);
-      }
+      setShowSupportForm(false);
     } catch (error) {
       addBotMessage("Failed to submit your request. Please try again later.", defaultQuickReplies);
     } finally {
@@ -154,79 +150,77 @@ const Chatbot = () => {
   };
 
   return (
-    <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1000 }}>
+    <Box sx={{ 
+      position: 'fixed', 
+      bottom: isMobile ? 16 : 20, 
+      right: isMobile ? 16 : 20, 
+      zIndex: 1300,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end'
+    }}>
       {isOpen && (
         <Box sx={{
-          width: { xs: '90vw', sm: 380 },
-          height: 560,
+          width: isMobile ? 'calc(100vw - 32px)' : 380,
+          height: isMobile ? 'calc(100vh - 100px)' : 560,
+          maxHeight: isMobile ? '80vh' : 'none',
           bgcolor: 'background.paper',
           borderRadius: 4,
-          boxShadow: '0px 10px 25px rgba(0, 0, 0, 0.2)',
+          boxShadow: 24,
           display: 'flex',
           flexDirection: 'column',
           border: '1px solid',
           borderColor: 'divider',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          mb: 2,
+          zIndex: 1301
         }}>
-          {/* Header with logo */}
+          {/* Header */}
           <Box sx={{
             bgcolor: 'primary.main',
             color: 'primary.contrastText',
-            p: 2,
+            p: isMobile ? 1.5 : 2,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             borderTopLeftRadius: 12,
             borderTopRightRadius: 12
           }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Avatar 
-                src="/company-logo.png" 
-                alt="Company Logo"
-                sx={{ 
-                  width: 32, 
-                  height: 32,
-                  bgcolor: 'secondary.main'
-                }}
-              >
-                <BotIcon />
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Avatar sx={{ 
+                width: isMobile ? 28 : 32, 
+                height: isMobile ? 28 : 32,
+                bgcolor: 'secondary.main'
+              }}>
+                <BotIcon fontSize={isMobile ? 'small' : 'medium'} />
               </Avatar>
-              <Typography variant="h6" fontWeight="medium" fontFamily="'INTER', sans-serif">
+              <Typography 
+                variant="h6" 
+                fontWeight="medium" 
+                fontFamily="'Inter', sans-serif"
+                fontSize={isMobile ? '1rem' : '1.25rem'}
+              >
                 Nexi AI Assistant
               </Typography>
             </Box>
             <IconButton 
               color="inherit" 
               onClick={() => setIsOpen(false)}
-              sx={{
-                '&:hover': {
-                  bgcolor: 'rgba(255,255,255,0.1)'
-                }
-              }}
+              size={isMobile ? 'small' : 'medium'}
             >
-              <CloseIcon />
+              <CloseIcon fontSize={isMobile ? 'small' : 'medium'} />
             </IconButton>
           </Box>
           
           {/* Messages */}
           <Box sx={{ 
             flex: 1, 
-            p: 2, 
+            p: isMobile ? 1 : 2, 
             overflowY: 'auto', 
             bgcolor: 'background.default',
             display: 'flex',
             flexDirection: 'column',
-            gap: 2,
-            '&::-webkit-scrollbar': {
-              width: 6,
-            },
-            '&::-webkit-scrollbar-track': {
-              background: 'transparent',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: '#888',
-              borderRadius: 3,
-            },
+            gap: isMobile ? 1 : 2
           }}>
             {messages.map((msg, i) => (
               <Box key={i} sx={{
@@ -234,54 +228,61 @@ const Chatbot = () => {
                 flexDirection: 'column',
                 alignItems: msg.sender === 'user' ? 'flex-end' : 'flex-start'
               }}>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  mb: 0.5
-                }}>
-                  <Avatar sx={{
-                    width: 28,
-                    height: 28,
-                    bgcolor: msg.sender === 'user' ? 'primary.main' : 'secondary.main'
-                  }}>
-                    {msg.sender === 'user' ? <UserIcon fontSize="small" /> : <BotIcon fontSize="small" />}
-                  </Avatar>
-                  <Typography variant="caption" color="text.secondary" fontSize="0.7rem" fontFamily="'Inter', sans-serif">
-                    {msg.sender === 'user' ? 'You' : 'Nexi'}
-                  </Typography>
-                </Box>
+                <Box
+  sx={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 0.5,
+    mb: 0.5,
+  }}
+>
+  <Avatar
+    sx={{
+      width: isMobile ? 24 : 28,
+      height: isMobile ? 24 : 28,
+      bgcolor: msg.sender === 'user' ? 'primary.main' : 'secondary.main',
+      overflow: 'hidden',
+    }}
+  >
+    {msg.sender === 'user' ? (
+      <UserIcon fontSize={isMobile ? 'small' : 'medium'} />
+    ) : (
+      <img
+        src="/favicon.ico"
+        alt="favicon"
+        style={{
+          width: isMobile ? 16 : 20,
+          height: isMobile ? 16 : 20,
+          objectFit: 'contain',
+        }}
+      />
+    )}
+  </Avatar>
+  <Typography
+    variant="caption"
+    color="text.secondary"
+    fontSize={isMobile ? '0.6rem' : '0.7rem'}
+    fontFamily="'Inter', sans-serif"
+  >
+    {msg.sender === 'user' ? 'You' : 'Nexi'}
+  </Typography>
+</Box>
+
                 
                 <Box sx={{
-                  p: 1.5,
+                  p: isMobile ? 1 : 1.5,
                   borderRadius: 3,
                   bgcolor: msg.sender === 'user' ? 'primary.main' : 'background.paper',
                   color: msg.sender === 'user' ? 'primary.contrastText' : 'text.primary',
                   boxShadow: 1,
-                  maxWidth: '85%',
+                  maxWidth: isMobile ? '90%' : '85%',
                   borderTopLeftRadius: msg.sender === 'user' ? 12 : 2,
-                  borderTopRightRadius: msg.sender === 'user' ? 2 : 12,
-                  position: 'relative',
-                  '&:after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: msg.sender === 'user' ? 'auto' : -8,
-                    right: msg.sender === 'user' ? -8 : 'auto',
-                    width: 0,
-                    height: 0,
-                    border: '10px solid transparent',
-                    borderBottomColor: msg.sender === 'user' ? 'primary.main' : 'background.paper',
-                    borderTop: 0,
-                    marginLeft: '-10px',
-                    marginBottom: '-10px',
-                    transform: msg.sender === 'user' ? 'rotate(-20deg)' : 'rotate(20deg)'
-                  }
+                  borderTopRightRadius: msg.sender === 'user' ? 2 : 12
                 }}>
                   <Typography 
                     sx={{ 
                       whiteSpace: 'pre-line',
-                      fontSize: '0.9rem',
+                      fontSize: isMobile ? '0.8rem' : '0.9rem',
                       lineHeight: 1.5,
                       fontFamily: "'Inter', sans-serif",
                       fontWeight: msg.sender === 'user' ? 500 : 400
@@ -295,19 +296,19 @@ const Chatbot = () => {
                   <Box sx={{ 
                     display: 'flex', 
                     flexWrap: 'wrap', 
-                    gap: 1, 
-                    mt: 1.5,
+                    gap: 0.5, 
+                    mt: 1,
                     justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start'
                   }}>
                     {msg.quickReplies.map((reply, j) => {
                       const iconMap = {
-                        'services': <ServicesIcon fontSize="small" />,
-                        'pricing': <PricingIcon fontSize="small" />,
-                        'projects': <ProjectsIcon fontSize="small" />,
-                        'career': <WorkIcon fontSize="small" />,
-                        'contact': <EmailIcon fontSize="small" />,
-                        'support': <SupportIcon fontSize="small" />,
-                        'menu': <MenuIcon fontSize="small" />
+                        'services': <ServicesIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'pricing': <PricingIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'projects': <ProjectsIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'career': <WorkIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'contact': <EmailIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'support': <SupportIcon fontSize={isMobile ? 'small' : 'medium'} />,
+                        'menu': <MenuIcon fontSize={isMobile ? 'small' : 'medium'} />
                       };
                       
                       return (
@@ -315,21 +316,20 @@ const Chatbot = () => {
                           key={j}
                           label={reply === 'menu' ? 'Main Menu' : reply.charAt(0).toUpperCase() + reply.slice(1)}
                           onClick={() => handleQuickReply(reply)}
-                          size="small"
+                          size={isMobile ? 'small' : 'medium'}
                           icon={iconMap[reply] || null}
                           sx={{ 
                             cursor: 'pointer',
                             bgcolor: 'background.paper',
                             color: 'text.primary',
-                            fontSize: '0.75rem',
+                            fontSize: isMobile ? '0.65rem' : '0.75rem',
                             fontFamily: "'Inter', sans-serif",
                             '&:hover': { 
-                              bgcolor: 'action.hover',
-                              transform: 'translateY(-2px)'
+                              bgcolor: 'action.hover'
                             },
-                            transition: 'all 0.2s ease',
                             boxShadow: 1,
-                            borderRadius: 2
+                            borderRadius: 2,
+                            height: isMobile ? 24 : 32
                           }}
                         />
                       );
@@ -344,183 +344,166 @@ const Chatbot = () => {
                 display: 'flex', 
                 alignItems: 'center', 
                 gap: 1,
-                p: 1.5,
+                p: 1,
                 bgcolor: 'background.paper',
                 borderRadius: 3,
                 boxShadow: 1,
                 width: 'fit-content',
                 alignSelf: 'center'
               }}>
-                <Avatar sx={{ width: 28, height: 28, bgcolor: 'secondary.main' }}>
-                  <BotIcon fontSize="small" />
+                <Avatar sx={{ 
+                  width: isMobile ? 24 : 28, 
+                  height: isMobile ? 24 : 28, 
+                  bgcolor: 'secondary.main' 
+                }}>
+                  <BotIcon fontSize={isMobile ? 'small' : 'medium'} />
                 </Avatar>
-                <CircularProgress size={20} thickness={4} />
-                <Typography variant="caption" color="text.secondary" fontSize="0.75rem" fontFamily="'Inter', sans-serif">
+                <CircularProgress size={isMobile ? 16 : 20} thickness={4} />
+                <Typography 
+                  variant="caption" 
+                  color="text.secondary" 
+                  fontSize={isMobile ? '0.65rem' : '0.75rem'} 
+                  fontFamily="'Inter', sans-serif"
+                >
                   Thinking...
                 </Typography>
               </Box>
             )}
             
             {showSupportForm && (
-  <Paper elevation={3} sx={{ 
-    p: 2, 
-    mt: 2, 
-    bgcolor: 'background.paper',
-    borderRadius: 3,
-    border: '1px solid',
-    borderColor: 'divider'
-  }}>
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-      <SupportIcon color="primary" fontSize="small" />
-      <Typography variant="subtitle2" fontFamily="'Inter', sans-serif" fontSize="0.95rem">
-        Support Request
-      </Typography>
-    </Box>
-    <Divider sx={{ mb: 2 }} />
-    <Box component="form" onSubmit={handleSupportSubmit}>
-      <TextField
-        fullWidth
-        margin="dense"
-        label="Your Name"
-        required
-        value={supportForm.name}
-        onChange={(e) => setSupportForm({...supportForm, name: e.target.value})}
-        sx={{ mb: 1.5 }}
-        size="small"
-        InputProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-        InputLabelProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-      />
-      <TextField
-        fullWidth
-        margin="dense"
-        label="Email"
-        type="email"
-        required
-        value={supportForm.email}
-        onChange={(e) => setSupportForm({...supportForm, email: e.target.value})}
-        sx={{ mb: 1.5 }}
-        size="small"
-        InputProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-        InputLabelProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-      />
-      <FormControl fullWidth margin="dense" sx={{ mb: 1.5 }}>
-        <InputLabel sx={{ 
-          fontSize: '0.875rem',
-          fontFamily: "'Inter', sans-serif"
-        }}>
-          Problem Type
-        </InputLabel>
-        <Select
-          value={supportForm.problemType}
-          label="Problem Type"
-          onChange={(e) => setSupportForm({...supportForm, problemType: e.target.value})}
-          size="small"
-          sx={{
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }}
-        >
-          <MenuItem value="technical" sx={{ fontSize: '0.875rem' }}>Technical Issue</MenuItem>
-          <MenuItem value="billing" sx={{ fontSize: '0.875rem' }}>Billing/Invoice</MenuItem>
-          <MenuItem value="general" sx={{ fontSize: '0.875rem' }}>General Inquiry</MenuItem>
-          <MenuItem value="service" sx={{ fontSize: '0.875rem' }}>Service Request</MenuItem>
-          <MenuItem value="privacy" sx={{ fontSize: '0.875rem' }}>Project Related</MenuItem>
-          <MenuItem value="complaint" sx={{ fontSize: '0.875rem' }}>Complaint</MenuItem>
-          <MenuItem value="bug" sx={{ fontSize: '0.875rem' }}>Bug Report</MenuItem>
-          <MenuItem value="feature" sx={{ fontSize: '0.875rem' }}>Feature Request</MenuItem>
-          <MenuItem value="account" sx={{ fontSize: '0.875rem' }}>Account Issue</MenuItem>
-          <MenuItem value="access" sx={{ fontSize: '0.875rem' }}>Access Request</MenuItem>
-          <MenuItem value="security" sx={{ fontSize: '0.875rem' }}>Security Concern</MenuItem>
-          <MenuItem value="feedback" sx={{ fontSize: '0.875rem' }}>Feedback/Suggestion</MenuItem>
-          <MenuItem value="other" sx={{ fontSize: '0.875rem' }}>Other</MenuItem>
-        </Select>
-      </FormControl>
-      <TextField
-        fullWidth
-        margin="dense"
-        label="Description"
-        multiline
-        rows={3}
-        required
-        value={supportForm.description}
-        onChange={(e) => setSupportForm({...supportForm, description: e.target.value})}
-        sx={{ mb: 2 }}
-        size="small"
-        InputProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-        InputLabelProps={{
-          style: {
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }
-        }}
-      />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-        <Button 
-          onClick={() => setShowSupportForm(false)}
-          variant="outlined"
-          sx={{ 
-            borderRadius: 2,
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }}
-        >
-          Cancel
-        </Button>
-        <Button 
-          type="submit" 
-          variant="contained"
-          disabled={loading}
-          startIcon={loading ? <CircularProgress size={16} /> : <SuccessIcon fontSize="small" />}
-          sx={{ 
-            borderRadius: 2,
-            fontSize: '0.875rem',
-            fontFamily: "'Inter', sans-serif"
-          }}
-        >
-          {loading ? 'Submitting' : 'Submit'}
-        </Button>
-      </Box>
-    </Box>
-  </Paper>
-)}
+              <Paper elevation={3} sx={{ 
+                p: isMobile ? 1.5 : 2, 
+                mt: 1, 
+                bgcolor: 'background.paper',
+                borderRadius: 3,
+                border: '1px solid',
+                borderColor: 'divider'
+              }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                  <SupportIcon color="primary" fontSize={isMobile ? 'small' : 'medium'} />
+                  <Typography 
+                    variant="subtitle2" 
+                    fontFamily="'Inter', sans-serif" 
+                    fontSize={isMobile ? '0.85rem' : '0.95rem'}
+                  >
+                    Support Request
+                  </Typography>
+                </Box>
+                <Divider sx={{ mb: 1.5 }} />
+                <Box component="form" onSubmit={handleSupportSubmit}>
+                  <TextField
+                    fullWidth
+                    margin="dense"
+                    label="Your Name"
+                    required
+                    value={supportForm.name}
+                    onChange={(e) => setSupportForm({...supportForm, name: e.target.value})}
+                    sx={{ mb: 1 }}
+                    size="small"
+                    InputProps={{
+                      style: {
+                        fontSize: isMobile ? '0.8rem' : '0.875rem',
+                        fontFamily: "'Inter', sans-serif"
+                      }
+                    }}
+                  />
+                  <TextField
+                    fullWidth
+                    margin="dense"
+                    label="Email"
+                    type="email"
+                    required
+                    value={supportForm.email}
+                    onChange={(e) => setSupportForm({...supportForm, email: e.target.value})}
+                    sx={{ mb: 1 }}
+                    size="small"
+                    InputProps={{
+                      style: {
+                        fontSize: isMobile ? '0.8rem' : '0.875rem',
+                        fontFamily: "'Inter', sans-serif"
+                      }
+                    }}
+                  />
+                  <FormControl fullWidth margin="dense" sx={{ mb: 1 }}>
+                    <InputLabel sx={{ 
+                      fontSize: isMobile ? '0.8rem' : '0.875rem',
+                      fontFamily: "'Inter', sans-serif"
+                    }}>
+                      Problem Type
+                    </InputLabel>
+                    <Select
+                      value={supportForm.problemType}
+                      label="Problem Type"
+                      onChange={(e) => setSupportForm({...supportForm, problemType: e.target.value})}
+                      size="small"
+                      sx={{
+                        fontSize: isMobile ? '0.8rem' : '0.875rem',
+                        fontFamily: "'Inter', sans-serif"
+                      }}
+                    >
+                      <MenuItem value="technical">Technical Issue</MenuItem>
+                      <MenuItem value="billing">Billing/Invoice</MenuItem>
+                      <MenuItem value="general">General Inquiry</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <TextField
+                    fullWidth
+                    margin="dense"
+                    label="Description"
+                    multiline
+                    rows={isMobile ? 2 : 3}
+                    required
+                    value={supportForm.description}
+                    onChange={(e) => setSupportForm({...supportForm, description: e.target.value})}
+                    sx={{ mb: 1.5 }}
+                    size="small"
+                    InputProps={{
+                      style: {
+                        fontSize: isMobile ? '0.8rem' : '0.875rem',
+                        fontFamily: "'Inter', sans-serif"
+                      }
+                    }}
+                  />
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+                    <Button 
+                      onClick={() => setShowSupportForm(false)}
+                      variant="outlined"
+                      size={isMobile ? 'small' : 'medium'}
+                      sx={{ 
+                        fontSize: isMobile ? '0.75rem' : '0.875rem',
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button 
+                      type="submit" 
+                      variant="contained"
+                      disabled={loading}
+                      size={isMobile ? 'small' : 'medium'}
+                      startIcon={loading ? <CircularProgress size={isMobile ? 14 : 16} /> : <SuccessIcon fontSize={isMobile ? 'small' : 'medium'} />}
+                      sx={{ 
+                        fontSize: isMobile ? '0.75rem' : '0.875rem',
+                      }}
+                    >
+                      {loading ? 'Submitting' : 'Submit'}
+                    </Button>
+                  </Box>
+                </Box>
+              </Paper>
+            )}
             <div ref={messagesEndRef} />
           </Box>
           
           {/* Input Area */}
           <Box sx={{ 
-            p: 2, 
+            p: isMobile ? 1 : 2, 
             bgcolor: 'background.paper',
             borderTop: '1px solid',
             borderColor: 'divider'
           }}>
             <Box sx={{ 
               display: 'flex', 
-              gap: 1.5,
+              gap: 1,
               alignItems: 'center'
             }}>
               <TextField
@@ -538,13 +521,10 @@ const Chatbot = () => {
                     borderRadius: 3
                   },
                   '& .MuiInputBase-input': {
-                    py: 1.25,
-                    fontSize: '0.875rem',
+                    py: isMobile ? 1 : 1.25,
+                    fontSize: isMobile ? '0.8rem' : '0.875rem',
                     fontFamily: "'Inter', sans-serif"
                   },
-                  '& .MuiInputLabel-root': {
-                    fontSize: '0.875rem'
-                  }
                 }}
               />
               <Button
@@ -552,17 +532,13 @@ const Chatbot = () => {
                 onClick={handleSendMessage}
                 disabled={!input.trim() || loading}
                 sx={{
-                  minWidth: 48,
-                  height: 48,
+                  minWidth: isMobile ? 40 : 48,
+                  height: isMobile ? 40 : 48,
                   borderRadius: '50%',
-                  p: 0,
-                  '&:hover': {
-                    transform: 'scale(1.05)'
-                  },
-                  transition: 'all 0.2s ease'
+                  p: 0
                 }}
               >
-                <SendIcon fontSize="small" />
+                <SendIcon fontSize={isMobile ? 'small' : 'medium'} />
               </Button>
             </Box>
           </Box>
@@ -573,32 +549,33 @@ const Chatbot = () => {
       <Button
         variant="contained"
         onClick={() => setIsOpen(!isOpen)}
-        startIcon={<BotIcon fontSize="small" />}
+        startIcon={
+          <Box
+            component="img"
+            src="/favicon.ico"
+            alt="Bot Icon"
+            sx={{ width: 24, height: 24 }}
+          />
+        }
         sx={{
-          bgcolor: 'primary.main',
-          '&:hover': { 
-            bgcolor: 'primary.dark',
-            transform: 'translateY(-3px)'
+          bgcolor: 'secondary.main',
+          '&:hover': {
+            bgcolor: 'secondary.dark'
           },
           borderRadius: 3,
           boxShadow: 3,
           textTransform: 'none',
-          px: 3,
-          py: 1.5,
-          mt: 2,
-          transition: 'all 0.3s ease',
+          px: 2,
+          py: 1,
           display: 'flex',
           alignItems: 'center',
-          gap: 1.5,
-          fontSize: '0.875rem',
-          fontFamily: "'Inter', sans-serif"
+          gap: 0.5,
+          fontSize: isMobile ? '0.75rem' : '0.875rem',
+          fontFamily: "'Inter', sans-serif",
+          zIndex: 1300
         }}
       >
-        {isOpen ? 'Close Chat' : (
-          <>
-            <Box component="span">Nexi Support</Box>
-          </>
-        )}
+        {isOpen ? 'Close Chat' : 'Nexi Support'}
       </Button>
     </Box>
   );

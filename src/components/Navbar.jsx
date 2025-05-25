@@ -13,12 +13,10 @@ import {
   useMediaQuery,
   useTheme,
   Fade,
-  Avatar,
   ListItemIcon,
   ListItemText
 } from '@mui/material';
 import { 
-  Code as CodeIcon,
   Menu as MenuIcon,
   Close as CloseIcon,
   Home as HomeIcon,
@@ -26,7 +24,6 @@ import {
   DesignServices as ServicesIcon,
   ContactMail as ContactIcon,
   RocketLaunch as GetStartedIcon,
-  KeyboardArrowDown as ArrowDownIcon
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -57,7 +54,7 @@ const Navbar = () => {
       position="sticky" 
       elevation={0} 
       sx={{ 
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'rgba(174, 224, 243, 0.8)',
         backdropFilter: 'blur(10px)',
         color: 'primary.main',
         borderBottom: '1px solid rgba(0, 0, 0, 0.05)',

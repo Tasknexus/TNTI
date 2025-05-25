@@ -41,8 +41,8 @@ const ContactPage = () => {
                     fontSize: '2rem' 
                   }} />
                   <Box>
-                    <Typography>123 Tech Park, Gomti Nagar</Typography>
-                    <Typography>Lucknow, Uttar Pradesh 226010</Typography>
+                    <Typography>Jankipuram Sector, H</Typography>
+                    <Typography>Lucknow, Uttar Pradesh 226021</Typography>
                   </Box>
                 </Box>
 
@@ -53,7 +53,7 @@ const ContactPage = () => {
                     fontSize: '2rem' 
                   }} />
                   <Box>
-                    <Typography>+91 98765 43210</Typography>
+                    <Typography>+91 9455030291</Typography>
                     <Chip 
                       label="Available 9AM-6PM" 
                       size="small" 
@@ -72,7 +72,7 @@ const ContactPage = () => {
                     color: 'primary.main', 
                     fontSize: '2rem' 
                   }} />
-                  <Typography>lucknow@devcraft.com</Typography>
+                  <Typography>Tasknexus2025@gmail.com</Typography>
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -83,7 +83,7 @@ const ContactPage = () => {
                   }} />
                   <Box>
                     <Typography>Monday-Friday: 9AM - 6PM</Typography>
-                    <Typography>Saturday: 10AM - 4PM</Typography>
+                    <Typography>Saturday: 12AM - 4PM</Typography>
                   </Box>
                 </Box>
               </Stack>
@@ -93,7 +93,7 @@ const ContactPage = () => {
           {/* Map Box - Left Side */}
           <Grid item xs={12} md={6}>
             <Box sx={{
-              width: '1050px',
+              width: '500px',
               height: '100%',
               borderRadius: '16px',
               overflow: 'hidden',

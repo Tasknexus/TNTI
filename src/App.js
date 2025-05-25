@@ -15,6 +15,8 @@ import ProjectDetails from './components/portfolio/PortfolioDetail'; // Updated 
 import ServiceRequestForm from './components/ServiceRequestForm';
 import Careers from './pages/Careers';
 import Blog from './pages/Blog';
+import Chatbot from './components/Chatbot'; // Correct the path if needed
+import { Suspense, lazy } from 'react'; // Already imported
 import Press from './pages/Press';
 import Features from './pages/Features';
 import Pricing from './pages/Pricing';
@@ -22,7 +24,6 @@ import API from './pages/API';
 import Integrations from './pages/Integrations';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -94,6 +95,11 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+
+        {/* ✅ Global Chatbot Component */}
+  <Suspense fallback={null}>
+    <Chatbot />
+  </Suspense>
       </Router>
     </ThemeProvider>
   );

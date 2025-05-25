@@ -25,8 +25,8 @@ const Pricing = () => {
     {
       id: 'premium',
       name: "Premium Dynamic Website",
-      originalPrice: 21999,
-      price: 18040,
+      originalPrice: 24999,
+      price: 20500,
       features: [
         "6–8 Pages with Admin Panel",
         "Content Update System",
@@ -51,8 +51,8 @@ const Pricing = () => {
     {
       id: 'pro',
       name: "Pro Website Package",
-      originalPrice: 11999,
-      price: 9840,
+      originalPrice: 19999,
+      price: 16399,
       features: [
         "4–5 Pages",
         "Inquiry Form",
@@ -98,8 +98,8 @@ const Pricing = () => {
     {
       id: 'webapp',
       name: "Basic Web Application",
-      originalPrice: 24999,
-      price: 19999,
+      originalPrice: 9999,
+      price: 8000,
       features: [
         "Responsive Design",
         "Admin Dashboard",
@@ -123,8 +123,8 @@ const Pricing = () => {
     {
       id: 'desktop',
       name: "Small Desktop Application",
-      originalPrice:25000,
-      price: 20000,
+      originalPrice:4999,
+      price: 4000,
       features: [
         "Windows/Mac/Linux",
         "Offline Functionality",

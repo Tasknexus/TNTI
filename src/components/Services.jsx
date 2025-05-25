@@ -37,6 +37,7 @@ const services = [
 const Services = () => {
   return (
     <Box sx={{ py: 10, backgroundColor: 'background.paper' }}>
+      
       <Container maxWidth="xl">
         <Typography variant="h3" align="center" sx={{ fontWeight: 'bold', mb: 2 }}>
           Our <Box component="span" sx={{ color: 'primary.main' }}>Services</Box>

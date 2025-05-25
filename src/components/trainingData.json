@@ -1,13 +1,13 @@
 [
     {
       "question": "how to apply",
-      "answer": "You can apply through our careers page at https://techsolutions.com/careers",
+      "answer": "You can apply through our careers page at https://tasknexus2025.com/careers",
       "keywords": ["apply", "application", "how to join"],
       "category": "career"
     },
     {
       "question": "what is your email",
-      "answer": "Our contact email is info@techsolutions.com",
+      "answer": "Our contact email is tasknexus2025@gmail.com",
       "keywords": ["email", "contact email", "mail"],
       "category": "contact"
     },
@@ -37,13 +37,13 @@
     },
     {
       "question": "how to apply",
-      "answer": "You can apply through our careers page at https://techsolutions.com/careers",
+      "answer": "You can apply through our careers page at tasknexus2025@gmail.com",
       "keywords": ["apply", "application", "how to join"],
       "category": "career"
     },
     {
       "question": "what is your email",
-      "answer": "Our contact email is info@techsolutions.com",
+      "answer": "Our contact email is tasknexus2025@gmail.com",
       "keywords": ["email", "contact email", "mail"],
       "category": "contact"
     },
@@ -67,7 +67,7 @@
     },
     {
       "question": "how to contact support",
-      "answer": "You can reach our support team via email at support@techsolutions.com or call us at +91-9876543210.",
+      "answer": "You can reach our support team via email at tasknexus2025@gmail.com or call us at +91-9876543210.",
       "keywords": ["support", "help", "contact support", "customer care"],
       "category": "support"
     },
@@ -97,7 +97,7 @@
     },
     {
       "question": "do you have a portfolio",
-      "answer": "Yes, you can view our portfolio at https://techsolutions.com/portfolio to see our recent work.",
+      "answer": "Yes, you can view our portfolio at http://localhost:3000/portfolio/all to see our recent work.",
       "keywords": ["portfolio", "projects", "past work", "examples"],
       "category": "portfolio"
     },
@@ -121,8 +121,321 @@
     },
     {
       "question": "getting error on website",
-      "answer": "We’re sorry for the inconvenience. Please take a screenshot of the error and email it to support@techsolutions.com.",
+      "answer": "We’re sorry for the inconvenience. Please take a screenshot of the error and email it to tasknexus2025@gmail.com.",
       "keywords": ["error", "bug", "website problem", "app crash"],
       "category": "issues"
-    }
-  ]
+    },
+    
+  {
+    "question": "What is included in the Premium Dynamic Website package?",
+    "answer": "The Premium Dynamic Website package includes 6–8 pages with an admin panel, content update system, contact form (DB + email), SSL, advanced SEO tools, blog section, payment gateway integration, and more.",
+    "keywords": ["premium", "website package", "features", "included"],
+    "category": "packages"
+  },
+  {
+    "question": "Lifetime free access ka matlab kya hota hai?",
+    "answer": "Lifetime free access ka matlab hai ki aapko kabhi bhi platform use karne ke liye yearly charges nahi dene padenge. Aapka admin panel aur website lifetime tak accessible rahega.",
+    "keywords": ["lifetime", "free", "access", "yearly charges"],
+    "category": "pricing"
+  },
+  {
+    "question": "Monthly maintenance fee kisliye hoti hai?",
+    "answer": "Monthly maintenance fee regular updates, bug fixing, backups, server monitoring aur support ke liye hoti hai. Yeh ensure karta hai ki aapki website smooth aur secure rahe.",
+    "keywords": ["maintenance", "fee", "updates", "support"],
+    "category": "services"
+  },
+  {
+    "question": "Pro Website Package me AI-powered content creation kya karta hai?",
+    "answer": "Is feature se aap automatic content generate kar sakte hain jaise blogs, descriptions, etc. using AI, which saves your time and boosts SEO.",
+    "keywords": ["AI", "content", "creation", "automated"],
+    "category": "features"
+  },
+  {
+    "question": "Kya Starter Package me admin panel milega?",
+    "answer": "Nahi, Smart Starter Package me admin panel nahi hota. Lekin client panel hota hai jahan aap status dekh sakte hain.",
+    "keywords": ["starter", "package", "admin panel", "client panel"],
+    "category": "packages"
+  },
+  {
+    "question": "SEO Package me kya-kya included hai?",
+    "answer": "SEO package me keyword research, on-page optimization, backlink building, technical audit, competitor analysis, aur monthly reports milte hain.",
+    "keywords": ["SEO", "package", "keyword", "optimization"],
+    "category": "services"
+  },
+  {
+    "question": "Logo Design Package ke files kis format me milenge?",
+    "answer": "Aapko high-quality files milengi: AI, EPS, PNG, JPG, SVG, PDF — jise aap kisi bhi platform pe use kar sakte hain.",
+    "keywords": ["logo", "design", "files", "formats"],
+    "category": "design"
+  },
+  {
+    "question": "Web application aur website me kya difference hota hai?",
+    "answer": "Website mainly informative hoti hai jabki web application me login, dashboard, authentication, CMS jaise interactive features hote hain.",
+    "keywords": ["web app", "website", "difference", "features"],
+    "category": "technical"
+  },
+  {
+    "question": "Mujhe bilingual website chahiye. Kya possible hai?",
+    "answer": "Haan, Premium Dynamic Website package me multi-language support included hai.",
+    "keywords": ["bilingual", "multilingual", "language", "support"],
+    "category": "features"
+  },
+  {
+    "question": "Client Panel ka matlab kya hota hai?",
+    "answer": "Client panel ek mini-dashboard hota hai jisme aap apni website ka status, updates aur analytics dekh sakte hain.",
+    "keywords": ["client", "panel", "dashboard", "status"],
+    "category": "features"
+  },
+  {
+    "question": "Kya payment gateway integration me Razorpay, Stripe supported hai?",
+    "answer": "Yes, hum Razorpay, Stripe, PayPal jaise major gateways integrate kar sakte hain.",
+    "keywords": ["payment", "gateway", "Razorpay", "Stripe"],
+    "category": "ecommerce"
+  },
+  {
+    "question": "Pro Package me activation cost ₹149 kaise pay karni hoti hai?",
+    "answer": "Activation cost advance payment ke time pe li jaati hai, mostly via UPI, bank transfer, ya card.",
+    "keywords": ["activation", "cost", "payment", "method"],
+    "category": "pricing"
+  },
+  {
+    "question": "Smart Starter Package me delivery time kitna hota hai?",
+    "answer": "Starter package 5–7 din me deliver ki jaati hai, agar saari details timely mil jaayein to.",
+    "keywords": ["starter", "package", "delivery", "time"],
+    "category": "delivery"
+  },
+  {
+    "question": "Agar mujhe later kuch features add karwane ho to kya kar sakte hain?",
+    "answer": "Haan, aap future me features upgrade karwa sakte hain. Charges depend karenge module ke complexity pe.",
+    "keywords": ["upgrade", "features", "add", "later"],
+    "category": "services"
+  },
+  {
+    "question": "Kya desktop app offline bhi kaam karega?",
+    "answer": "Yes, desktop application fully offline compatible hota hai with local database support.",
+    "keywords": ["desktop", "app", "offline", "compatible"],
+    "category": "technical"
+  },
+  {
+    "question": "Small Desktop App kis platform ke liye hota hai?",
+    "answer": "Windows, Mac, aur Linux — tino ke liye available hai as per your requirement.",
+    "keywords": ["desktop", "app", "platform", "windows"],
+    "category": "technical"
+  },
+  {
+    "question": "SSL certificate free milega ya alag se lena padega?",
+    "answer": "Premium aur WebApp packages me SSL certificate free me included hota hai.",
+    "keywords": ["SSL", "certificate", "free", "security"],
+    "category": "technical"
+  },
+  {
+    "question": "Custom branding ka kya matlab hota hai?",
+    "answer": "Custom branding me hum aapke logo, color scheme aur brand identity ke according design karte hain.",
+    "keywords": ["custom", "branding", "logo", "design"],
+    "category": "design"
+  },
+  {
+    "question": "Virtual Reality Integration kya hota hai website me?",
+    "answer": "Is feature se aap apni site me immersive VR experiences add kar sakte hain — useful for real estate, products showcase, etc.",
+    "keywords": ["VR", "virtual", "reality", "integration"],
+    "category": "features"
+  },
+  {
+    "question": "24/7 Human-like Support kaise kaam karta hai?",
+    "answer": "Ye AI-based chatbot hota hai jo real-time me users ko queries ka jawab deta hai jese ek insaan deta.",
+    "keywords": ["support", "24/7", "chatbot", "AI"],
+    "category": "support"
+  },
+  {
+    "question": "Newsletter System ka kya benefit hai?",
+    "answer": "Aap directly apne users ko latest updates, offers, aur blogs email ke through bhej sakte ho.",
+    "keywords": ["newsletter", "email", "updates", "marketing"],
+    "category": "features"
+  },
+  {
+    "question": "Blog section SEO ke liye kitna important hai?",
+    "answer": "Blogs aapki website ki ranking improve karte hain aur audience engagement badhate hain.",
+    "keywords": ["blog", "SEO", "ranking", "content"],
+    "category": "seo"
+  },
+  {
+    "question": "Kya basic package me Google Analytics milega?",
+    "answer": "Google Analytics sirf Web Application aur Pro Package me included hai.",
+    "keywords": ["Google", "Analytics", "package", "included"],
+    "category": "analytics"
+  },
+  {
+    "question": "Kya EMI options available hain?",
+    "answer": "Currently EMI available nahi hai, but aap partial payment kar sakte hain on mutual agreement.",
+    "keywords": ["EMI", "payment", "options", "installments"],
+    "category": "pricing"
+  },
+  {
+    "question": "Activation cost ek baar hi pay karni hoti hai?",
+    "answer": "Haan, activation cost sirf one-time hoti hai jab aap project start karte ho.",
+    "keywords": ["activation", "cost", "one-time", "payment"],
+    "category": "pricing"
+  },
+  {
+    "question": "Kya aap mera existing website upgrade kar sakte hain?",
+    "answer": "Yes, hum redesign and upgrade services bhi provide karte hain. Uska alag quotation diya jaata hai.",
+    "keywords": ["upgrade", "redesign", "existing", "website"],
+    "category": "services"
+  },
+  {
+    "question": "Kya mujhe domain aur hosting lena padega separately?",
+    "answer": "WebApp package me domain & hosting 1 year ke liye free included hai (if billed annually). Baaki packages me alag cost hoti hai.",
+    "keywords": ["domain", "hosting", "included", "free"],
+    "category": "hosting"
+  },
+  {
+    "question": "Kya main apne hosting panel se website control kar sakta hoon?",
+    "answer": "Haan, agar aapko cPanel ya Plesk chahiye, to hum uska access provide karte hain.",
+    "keywords": ["hosting", "panel", "control", "access"],
+    "category": "hosting"
+  },
+  {
+    "question": "Kya Android app bhi bana sakte hain isi website ka?",
+    "answer": "Haan, agar aap backend-ready package lete hain (like WebApp), to usi API se Android app bhi develop ki ja sakti hai.",
+    "keywords": ["Android", "app", "mobile", "development"],
+    "category": "mobile"
+  },
+  {
+    "question": "Mujhe ecommerce chahiye, kaunsa package best rahega?",
+    "answer": "Premium ya WebApp Package ecommerce functionalities ke liye best hai — with payment gateway and admin panel.",
+    "keywords": ["ecommerce", "package", "best", "recommended"],
+    "category": "ecommerce"
+  },
+  {
+    "question": "Hosting ke liye kya provider use karte ho aap?",
+    "answer": "Hum Hostinger, AWS, GoDaddy, ya client ke preferred hosting providers ka use karte hain.",
+    "keywords": ["hosting", "provider", "AWS", "GoDaddy"],
+    "category": "hosting"
+  },
+  {
+    "question": "Backup system automatic hoga ya manual?",
+    "answer": "Mostly automatic backup system integrate kiya jaata hai jo regular schedule pe files save karta hai.",
+    "keywords": ["backup", "system", "automatic", "manual"],
+    "category": "technical"
+  },
+  {
+    "question": "Client panel aur admin panel me kya difference hai?",
+    "answer": "Client panel viewing ke liye hota hai, jabki admin panel se content edit/update bhi kar sakte hain.",
+    "keywords": ["client", "admin", "panel", "difference"],
+    "category": "features"
+  },
+  {
+    "question": "Kya maintenance lena zaruri hai?",
+    "answer": "Maintenance optional hai, but recommended hai for smooth updates, security, aur uptime assurance.",
+    "keywords": ["maintenance", "optional", "recommended", "security"],
+    "category": "services"
+  },
+  {
+    "question": "Website ka data mera hoga ya aapka?",
+    "answer": "Pure 100% data ownership aapki hogi. Hum sirf service provider hain.",
+    "keywords": ["data", "ownership", "website", "yours"],
+    "category": "legal"
+  },
+  {
+    "question": "Kya website me custom animation add ho sakta hai?",
+    "answer": "Haan, aapka requirement ho to custom 2D/3D animations integrate ki ja sakti hain.",
+    "keywords": ["custom", "animation", "2D", "3D"],
+    "category": "design"
+  },
+  {
+    "question": "Mujhe sirf homepage design karwana hai. Kya possible hai?",
+    "answer": "Yes, aap custom request de sakte hain. Ek-page design ka separate quote diya jaayega.",
+    "keywords": ["homepage", "design", "single", "page"],
+    "category": "design"
+  },
+  {
+    "question": "Kya package customize ho sakta hai according to my need?",
+    "answer": "Yes, sab packages fully customizable hain. Aap jo features chahte ho woh add/remove ho sakte hain.",
+    "keywords": ["customize", "package", "features", "flexible"],
+    "category": "packages"
+  },
+  {
+    "question": "Kya aapka system GST invoice Provide krte hai?",
+    "answer": "Haan, hum GST invoice provide karte hain on request.",
+    "keywords": ["GST", "compliant", "invoice", "tax"],
+    "category": "legal"
+  },
+  {
+    "question": "Delivery time kya rahega har package ka?",
+    "answer": "Starter: 5–7 days, Pro: 7–10 days, Premium/WebApp: 10–14 days depending on requirements.",
+    "keywords": ["delivery", "time", "package", "timeline"],
+    "category": "delivery"
+  },
+  {
+    "question": "Kya website SEO-ready milegi?",
+    "answer": "Yes, sabhi packages me basic ya advanced SEO tools included hain for ranking.",
+    "keywords": ["SEO", "ready", "ranking", "tools"],
+    "category": "seo"
+  },
+  {
+    "question": "Kya main website me khud se content edit kar sakta hoon?",
+    "answer": "Haan, Premium aur WebApp package me content update system diya jaata hai jisse aap khud changes kar sakte hain.",
+    "keywords": ["edit", "content", "yourself", "CMS"],
+    "category": "features"
+  },
+  {
+    "question": "Kya aap logo designing alag se bhi karte hain?",
+    "answer": "Yes, humara Logo Design Package available hai with unlimited revisions aur social media kit.",
+    "keywords": ["logo", "design", "package", "separate"],
+    "category": "design"
+  },
+  {
+    "question": "Kya performance optimization bhi hota hai?",
+    "answer": "Yes, Smart Starter aur WebApp package me advanced performance optimization included hai.",
+    "keywords": ["performance", "optimization", "speed", "included"],
+    "category": "technical"
+  },
+  {
+    "question": "Kya website offline kaam karegi?",
+    "answer": "Nahi, sirf desktop apps offline work karti hain. Websites require internet.",
+    "keywords": ["offline", "website", "desktop", "app"],
+    "category": "technical"
+  },
+  {
+    "question": "Kya mere product list ke liye bhi CMS bana sakte ho?",
+    "answer": "Haan, CMS se aap products/services easily add/edit/delete kar sakte ho without coding.",
+    "keywords": ["CMS", "products", "management", "system"],
+    "category": "ecommerce"
+  },
+  {
+    "question": "Kya client testimonials aur image galleries bhi add ho sakte hain?",
+    "answer": "Yes, we can include testimonial sliders, image or video galleries as per design.",
+    "keywords": ["testimonials", "gallery", "images", "videos"],
+    "category": "features"
+  },
+  {
+    "question": "Kya aap social media integration karte hain?",
+    "answer": "Haan, sabhi packages me social media links aur sharing options included hote hain.",
+    "keywords": ["social", "media", "integration", "sharing"],
+    "category": "features"
+  },
+  {
+    "question": "Kya mujhe domain khud se lena padega?",
+    "answer": "Nahi, agar aap WebApp package lete hain to domain free milega for 1 year. Baaki packages me alag se lena padega.",
+    "keywords": ["domain", "free", "included", "hosting"],
+    "category": "hosting"
+  },
+  {
+    "question": "Kya aapka support team 24/7 available hai?",
+    "answer": "Yes, humara support team email aur chat ke through 24/7 available hai for assistance.",
+    "keywords": ["support", "24/7", "help", "assistance"],
+    "category": "support"
+  },
+  {
+    "question": "getting error on website",
+    "answer": "We're sorry for the inconvenience. Please take a screenshot of the error and email it to tasknexus2025@gmail.com.",
+    "keywords": ["error", "bug", "website problem", "app crash"],
+    "category": "issues"
+  },
+  {
+    "question": "Service Plans and Pricing",
+    "answer": "Premium Dynamic Website ₹24,999/-. Pro Website Package ₹19,999/-. Smart Starter Package ₹4,999/-. Basic Web Application ₹9,999/-. Small Desktop App ₹4,999/-. Logo Design Package ₹1,500/-. SEO Package ₹7,999/-.  Web Application with Admin Panel ₹19,999/-.",
+    "keywords": ["Plan","Service Plans", "Packag", "website Package", "Plan", "pricing", "cost", "price", "costing", "charges", "rate", "rates", "offer", "offers", "discounts"],
+    "category": "Package"
+  }
+]

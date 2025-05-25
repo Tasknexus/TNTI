@@ -8,8 +8,6 @@ const Services = lazy(() => import('../components/Services'));
 const Portfolio = lazy(() => import('../components/portfolio/Portfolio'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
 const Team = lazy(() => import('../components/Team'));
-const Contact = lazy(() => import('../components/Contact'));
-const Chatbot = lazy(() => import('../components/Chatbot'));
 
 const Home = () => {
   return (
@@ -36,14 +34,8 @@ const Home = () => {
         <Team />
       </Suspense>
 
-      <Suspense fallback={<LoadingSpinner />}>
-        <Contact />
-      </Suspense>
-
-      {/* Chatbot loads last since it's less critical */}
-      <Suspense fallback={null}>
-        <Chatbot />
-      </Suspense>
+     
+     
     </Box>
   );
 };

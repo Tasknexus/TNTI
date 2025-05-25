@@ -1,0 +1,139 @@
+<svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="medicalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="crossGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="pulseGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Medical Cross with Animation -->
+  <g transform="translate(30, 20)">
+    <!-- Animated pulse background -->
+    <circle cx="25" cy="25" r="20" fill="url(#pulseGradient)">
+      <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Medical cross background circle -->
+    <circle cx="25" cy="25" r="18" fill="white" stroke="url(#medicalGradient)" stroke-width="2">
+      <animate attributeName="stroke-width" values="2;3;2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Red cross -->
+    <g>
+      <!-- Horizontal bar -->
+      <rect x="15" y="22" width="20" height="6" rx="3" fill="url(#crossGradient)">
+        <animate attributeName="width" values="20;22;20" dur="2.5s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Vertical bar -->
+      <rect x="22" y="15" width="6" height="20" rx="3" fill="url(#crossGradient)">
+        <animate attributeName="height" values="20;22;20" dur="2.5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <!-- Animated heartbeat line -->
+    <g transform="translate(50, 25)">
+      <path d="M0 0 L8 0 L10 -8 L12 16 L14 -12 L16 8 L18 0 L25 0" 
+            stroke="url(#crossGradient)" stroke-width="2" fill="none" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translateX" 
+                         values="0;5;0" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Stethoscope Animation -->
+  <g transform="translate(25, 60)">
+    <!-- Stethoscope head -->
+    <circle cx="15" cy="15" r="4" fill="none" stroke="url(#medicalGradient)" stroke-width="2">
+      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="15" cy="15" r="2" fill="url(#medicalGradient)" opacity="0.6"/>
+    
+    <!-- Stethoscope tube -->
+    <path d="M15 19 Q20 25 25 30 Q30 35 35 30 Q40 25 45 30" 
+          stroke="url(#medicalGradient)" stroke-width="2" fill="none" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Main Text -->
+  <g transform="translate(120, 35)">
+    <!-- "Shukla" text with typing animation -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="url(#textGradient)">
+      <tspan>S</tspan>
+      <tspan opacity="0">h
+        <animate attributeName="opacity" values="0;1" dur="0.1s" begin="0.5s" fill="freeze"/>
+      </tspan>
+      <tspan opacity="0">u
+        <animate attributeName="opacity" values="0;1" dur="0.1s" begin="0.7s" fill="freeze"/>
+      </tspan>
+      <tspan opacity="0">k
+        <animate attributeName="opacity" values="0;1" dur="0.1s" begin="0.9s" fill="freeze"/>
+      </tspan>
+      <tspan opacity="0">l
+        <animate attributeName="opacity" values="0;1" dur="0.1s" begin="1.1s" fill="freeze"/>
+      </tspan>
+      <tspan opacity="0">a
+        <animate attributeName="opacity" values="0;1" dur="0.1s" begin="1.3s" fill="freeze"/>
+      </tspan>
+    </text>
+    
+    <!-- "Medical" text with slide-in animation -->
+    <text x="0" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="url(#medicalGradient)">
+      Medical
+      <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.5s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translateX" 
+                       values="-30;0" dur="0.5s" begin="1.5s" fill="freeze"/>
+    </text>
+  </g>
+  
+ 
+  
+  <!-- Medical symbols floating around -->
+  <g opacity="0.6">
+    <!-- Pills -->
+    <ellipse cx="280" cy="30" rx="4" ry="6" fill="#06b6d4">
+      <animateTransform attributeName="transform" type="rotate" 
+                       values="0 280 30;360 280 30" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+    <rect x="276" y="27" width="8" height="2" fill="white"/>
+    
+    <!-- DNA helix -->
+    <g transform="translate(300, 45)">
+      <path d="M0 0 Q5 -5 10 0 Q15 5 20 0" stroke="#0ea5e9" stroke-width="2" fill="none">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0 8 Q5 3 10 8 Q15 13 20 8" stroke="#06b6d4" stroke-width="2" fill="none">
+        <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Medical kit -->
+    <g transform="translate(270, 70)">
+      <rect x="0" y="5" width="20" height="12" rx="2" fill="white" stroke="#0891b2" stroke-width="1"/>
+      <rect x="8" y="2" width="4" height="6" fill="#0891b2"/>
+      <rect x="6" y="9" width="8" height="2" fill="#ef4444"/>
+      <rect x="9" y="6" width="2" height="8" fill="#ef4444"/>
+    </g>
+  </g>
+  
+  <!-- Connecting line animation -->
+  <line x1="110" y1="45" x2="120" y2="45" stroke="url(#medicalGradient)" stroke-width="2" opacity="0">
+    <animate attributeName="opacity" values="0;0.8" dur="0.3s" begin="1.8s" fill="freeze"/>
+    <animate attributeName="stroke-width" values="0;2" dur="0.3s" begin="1.8s" fill="freeze"/>
+  </line>
+</svg>

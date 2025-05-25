@@ -9,8 +9,8 @@ export class ModelTrainer {
     this.trainingData = this.loadTrainingData();
     
     this.responses = {
-      greeting: "Hello! Welcome to Task Nexus Technology . How can I assist you today?",
-      ending: "Thank you for contacting TechSolutions. Have a great day!",
+      greeting: "Hello! Welcome to Naxi Ai Support . How can I assist you today?",
+      ending: "Thank you for contacting Naxi Ai Support. Have a great day!",
       loading: "Searching for information...",
       noJobs: "Currently we don't have any job openings. Please check back later.",
       support: "Please fill out the support form below:",
