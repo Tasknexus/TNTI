@@ -28,9 +28,9 @@ const teamMembers = [
     }
   },
   {
-    name: "Twinkle Yadav",
-    role: "Full-Stack Developer",
-    bio: "Full-stack developer specializing in React and Node.js",
+    name: "Sahil Khan",
+    role: "Graphics Designer",
+    bio: "Graphics Designer specializing in Adobe, Photoshop, Canva, Coral draw etc.",
     image: "", // Using imported image
     social: {
       linkedin: "#",
